@@ -15,5 +15,6 @@ COPY main.py .
 EXPOSE 8000
 
 # Run the application
-# Railway will provide PORT env var, default to 8000
-CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}"]
+# Railway will provide PORT env var, which is handled by main.py
+# Using Python directly ensures PORT env var is properly read
+CMD ["python", "main.py"]
